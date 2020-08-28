@@ -94,7 +94,7 @@ Rhd2000Registers::Rhd2000Registers(double sampleRate)
     adcAux3En = 1;              // enable ADC aux3 input (when RL is on chip) (0 = disable; 1 = enable)
 
     setUpperBandwidth(10000.0); // set upper bandwidth of amplifiers
-    setLowerBandwidth(1.0);     // set lower bandwidth of amplifiers
+    setLowerBandwidth(0.1);     // set lower bandwidth of amplifiers
 
     powerUpAllAmps();           // turn on all amplifiers
 }
