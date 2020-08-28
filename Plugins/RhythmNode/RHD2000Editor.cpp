@@ -591,6 +591,7 @@ RHD2000Editor::RHD2000Editor(GenericProcessor* parentNode,
     auxButton->setClickingTogglesState(true);
     auxButton->setTooltip("Toggle AUX channels (3 per headstage)");
     addAndMakeVisible(auxButton);
+    auxButton->setToggleState(true, dontSendNotification);
 
     adcButton = new UtilityButton("ADC", Font("Small Text", 13, Font::plain));
     adcButton->setRadius(3.0f);
@@ -987,10 +988,10 @@ BandwidthInterface::BandwidthInterface(RHD2000Thread* board_,
     name = "Bandwidth";
 
     lastHighCutString = "7500";
-    lastLowCutString = "1";
+    lastLowCutString = "0.1";
 
     actualUpperBandwidth = 7500.0f;
-    actualLowerBandwidth = 1.0f;
+    actualLowerBandwidth = 0.1f;
 
     upperBandwidthSelection = new Label("UpperBandwidth", lastHighCutString); // this is currently set in RHD2000Thread, the cleaner way would be to set it here again
     upperBandwidthSelection->setEditable(true, false, false);
@@ -1144,7 +1145,7 @@ SampleRateInterface::SampleRateInterface(RHD2000Thread* board_,
 
     rateSelection = new ComboBox("Sample Rate");
     rateSelection->addItemList(sampleRateOptions, 1);
-    rateSelection->setSelectedId(17, dontSendNotification);
+    rateSelection->setSelectedId(15, dontSendNotification);
     rateSelection->addListener(this);
     rateSelection->setBounds(0, 12, 80, 20);
     addAndMakeVisible(rateSelection);

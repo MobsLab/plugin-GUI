@@ -73,7 +73,7 @@ DataThread* RHD2000Thread::createDataThread(SourceNode *sn)
 }
 
 RHD2000Thread::RHD2000Thread(SourceNode* sn) : DataThread(sn),
-    chipRegisters(30000.0f),
+    chipRegisters(20000.0f),
     numChannels(0),
     deviceFound(false),
     isTransmitting(false),
@@ -381,7 +381,7 @@ void RHD2000Thread::initializeBoard()
     std::cout << "Initializing acquisition board." << std::endl;
     evalBoard->initialize();
     // This applies the following settings:
-    //  - sample rate to 30 kHz
+    //  - sample rate to 20 kHz
     //  - aux command banks to zero
     //  - aux command lengths to zero
     //  - continuous run mode to 'true'
@@ -393,7 +393,7 @@ void RHD2000Thread::initializeBoard()
     //  - clears the ttlOut
     //  - disables all DACs and sets gain to 0
 
-    setSampleRate(Rhd2000EvalBoard::SampleRate30000Hz);
+    setSampleRate(Rhd2000EvalBoard::SampleRate20000Hz);
     evalBoard->setCableLengthMeters(Rhd2000EvalBoard::PortA, cableLengthPortA);
     evalBoard->setCableLengthMeters(Rhd2000EvalBoard::PortB, cableLengthPortB);
     evalBoard->setCableLengthMeters(Rhd2000EvalBoard::PortC, cableLengthPortC);
@@ -489,7 +489,7 @@ void RHD2000Thread::scanPorts()
     chipId.insertMultiple(0, -1, 8);
     Array<int> tmpChipId(chipId);
 
-    setSampleRate(Rhd2000EvalBoard::SampleRate30000Hz, true); // set to 30 kHz temporarily
+    setSampleRate(Rhd2000EvalBoard::SampleRate20000Hz, true); // set to 20 kHz temporarily
 
     // Enable all data streams, and set sources to cover one or two chips
     // on Ports A-D.

@@ -36,11 +36,11 @@ using namespace OpalKellyLegacy;
 // This class provides access to and control of the Opal Kelly XEM6010 USB/FPGA
 // interface board running the Rhythm interface Verilog code.
 
-// Constructor.  Set sampling rate variable to 30.0 kS/s/channel (FPGA default).
+// Constructor.  Set sampling rate variable to 20.0 kS/s/channel (FPGA default).
 Rhd2000EvalBoard::Rhd2000EvalBoard()
 {
     int i;
-    sampleRate = SampleRate30000Hz; // Rhythm FPGA boots up with 30.0 kS/s/channel sampling rate
+    sampleRate = SampleRate20000Hz; // Rhythm FPGA boots up with 20.0 kS/s/channel sampling rate
     numDataStreams = 0;
     dev = 0;
     usb3 = false;
@@ -201,7 +201,7 @@ void Rhd2000EvalBoard::initialize()
     int i;
 
     resetBoard();
-    setSampleRate(SampleRate30000Hz);
+    setSampleRate(SampleRate20000Hz);
     selectAuxCommandBank(PortA, AuxCmd1, 0);
     selectAuxCommandBank(PortB, AuxCmd1, 0);
     selectAuxCommandBank(PortC, AuxCmd1, 0);
